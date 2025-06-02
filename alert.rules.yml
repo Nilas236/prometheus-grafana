@@ -1,0 +1,11 @@
+groups:
+- name: example
+  rules:
+  - alert: InstanceDown
+    expr: up == 0
+    for: 5m
+    labels:
+      severity: critical
+    annotations:
+      summary: "Инстанс {{ $labels.instance }} не отвечает"
+      description: "Инстанс {{ $labels.instance }} недоступен уже более 5 минут."
